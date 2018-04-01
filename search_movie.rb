@@ -15,6 +15,7 @@ query_response_status = parsed["status"]
 
 #If Search  Successful and return status
 if query_response_status=="ok"  
+
     puts
     puts
     movie_cnt=0
@@ -22,6 +23,7 @@ if query_response_status=="ok"
     p movie_cnt
     puts
     puts
+
     #p parsed["data"]["movies"]#["title"]
     movies_array= parsed["data"]["movies"]
         
@@ -30,7 +32,7 @@ if query_response_status=="ok"
            puts movies["title"]    
         end
     elsif movie_cnt==0
-        puts "Sorry !! No Movies found with #{movie_name} as name "
+        puts "Sorry !! No Movies found with  '#{user_movie_name}' as name.. "
     end
     puts
     puts
