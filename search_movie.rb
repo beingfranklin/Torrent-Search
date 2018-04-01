@@ -36,7 +36,7 @@ if query_response_status=="ok"
                movies["torrents"].each do |torrents|
                     peers=torrents["peers"].to_i
                     seeds=torrents["seeds"].to_i
-                    puts "Quality: "+ torrents["quality"]+" Size :"+ torrents["size"]  + Rainbow(" Seeders :#{seeds}").blue  + Rainbow(" Peers : #{peers} ").red + Rainbow(" Torrent : #{torrents["url"]}").bg(:yellow)
+                    puts "Quality: "+ torrents["quality"]+" Size :"+ torrents["size"]  + Rainbow(" Seeders :#{seeds}").blue  + Rainbow(" Peers : #{peers} ").red + Rainbow("  Torrent : #{torrents["url"]}").bg(:yellow)
                     puts 
                end
 
