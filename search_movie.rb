@@ -3,7 +3,7 @@ require 'rubygems'
 require 'net/http'
 require 'json'
 puts "Movie You want to search for?"
-movie_name =gets.chomp
+movie_name =gets.chomp.downcase.tr(" ", "-")
 url = "https://yts.am/api/v2/list_movies.json?query_term="+ movie_name + '"'
 uri = URI(url)
 response = Net::HTTP.get(uri)
@@ -20,12 +20,11 @@ puts
 #p parsed["data"]["movies"]#["title"]
 movies_array= parsed["data"]["movies"]
 
-movies_array.each do |key, value|  
-    puts "The hash key is #{key} and the value is #{value}." #key printing whole array
-    if (key =="id")
-        puts value
-    end
-end 
+parsed["data"]["movies"].each do |movies|
+    
+    puts movies["title"]    
+end
+
 puts
 puts
 
