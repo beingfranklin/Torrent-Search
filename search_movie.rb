@@ -21,7 +21,7 @@ puts
 movies_array= parsed["data"]["movies"]
 
 movies_array.each do |key, value|  
-    puts "The hash key is #{key} and the value is #{value}."
+    puts "The hash key is #{key} and the value is #{value}." #key printing whole array
     if (key =="id")
         puts value
     end
