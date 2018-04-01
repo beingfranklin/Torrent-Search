@@ -11,7 +11,7 @@ parsed = JSON.parse(response)
 p parsed["status"]
 puts
 puts
-i=0
+movie_cnt=0
 p parsed["data"]["movies"]#["0"]["title"]
     
 puts
