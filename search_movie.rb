@@ -13,8 +13,19 @@ p parsed["status"]
 puts
 puts
 movie_cnt=0
-p parsed["data"]["movies"]#["0"]["title"]
-    
+movie_cnt = parsed["data"]["movie_count"]
+p movie_cnt
+puts
+puts
+#p parsed["data"]["movies"]#["title"]
+movies_array= parsed["data"]["movies"]
+
+movies_array.each do |key, value|  
+    puts "The hash key is #{key} and the value is #{value}."
+    if (key =="id")
+        puts value
+    end
+end 
 puts
 puts
 
