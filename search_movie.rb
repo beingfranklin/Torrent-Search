@@ -4,7 +4,7 @@ require 'rubygems'
 require 'net/http'
 require 'json'
 require 'rainbow'
-
+require 'terminal-table'	
 
 puts "Movie You want to search for?"
 user_movie_name= gets.chomp
@@ -20,6 +20,7 @@ if query_response_status=="ok"
 
     puts
     puts
+    
     movie_cnt=0
     movie_cnt = parsed["data"]["movie_count"]
     p movie_cnt
@@ -30,18 +31,28 @@ if query_response_status=="ok"
     movies_array= parsed["data"]["movies"]
         
     if  movie_cnt>0
-        
+            rows = []
             parsed["data"]["movies"].each do |movies|   
-               puts movies["title_long"] 
+               puts Rainbow("#").yellow + movies["title_long"] 
+               
                movies["torrents"].each do |torrents|
                     peers=torrents["peers"].to_i
                     seeds=torrents["seeds"].to_i
+                     
+                    
                     puts "Quality: "+ torrents["quality"]+" Size :"+ torrents["size"]  + Rainbow(" Seeders :#{seeds}").blue  + Rainbow(" Peers : #{peers} ").red + Rainbow("  Torrent : #{torrents["url"]}").yellow #.bg(:yellow)
-                    puts 
+                   
+
+                    #rows << [movies["title_long"],torrents["quality"],torrents["size"],Rainbow(" Seeders :#{seeds}").blue,Rainbow(" Peers : #{peers} ").red,Rainbow("  Torrent : #{torrents["url"]}").yellow]
+                    
+                   # table = Terminal::Table.new :rows => rows
+                    #puts table
+
                end
 
             end
-             
+       
+      
     elsif movie_cnt==0
         puts "Sorry !! No Movies found with  '#{user_movie_name}' as name.. "
     end
