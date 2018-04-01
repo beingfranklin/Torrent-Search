@@ -2,7 +2,8 @@
 require 'rubygems'
 require 'net/http'
 require 'json'
-movie_name ='HellBoy'
+puts "Movie You want to search for?"
+movie_name =gets.chomp
 url = "https://yts.am/api/v2/list_movies.json?query_term="+ movie_name + '"'
 uri = URI(url)
 response = Net::HTTP.get(uri)
