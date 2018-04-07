@@ -23,9 +23,9 @@ if query_response_status=="ok"
     
     movie_cnt=0
     movie_cnt = parsed["data"]["movie_count"]
-    p movie_cnt
+    puts "Number of Movies Available : #{movie_cnt}" 
     puts
-    puts
+    
 
     #p parsed["data"]["movies"]#["title"]
     movies_array= parsed["data"]["movies"]
@@ -35,8 +35,11 @@ if query_response_status=="ok"
             count=0
             parsed["data"]["movies"].each do |movies|  
                 title=movies["title_long"]
+                rating=movies["rating"]
                 count+=1
-                puts Rainbow("##{count} - #{title}").bg(:white).black
+                puts
+                puts Rainbow("##{count} - #{title}").bg(:white).black + "  Rating : #{rating}"
+                puts
                
                 movies["torrents"].each do |torrents|
                     peers=torrents["peers"].to_i
