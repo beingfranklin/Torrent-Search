@@ -32,15 +32,18 @@ if query_response_status=="ok"
         
     if  movie_cnt>0
             rows = []
-            parsed["data"]["movies"].each do |movies|   
-               puts Rainbow("#").yellow + movies["title_long"] 
+            count=0
+            parsed["data"]["movies"].each do |movies|  
+                title=movies["title_long"]
+                count+=1
+                puts Rainbow("##{count} - #{title}").bg(:white).black
                
-               movies["torrents"].each do |torrents|
+                movies["torrents"].each do |torrents|
                     peers=torrents["peers"].to_i
                     seeds=torrents["seeds"].to_i
                      
                     
-                    puts "Quality: "+ torrents["quality"]+" Size :"+ torrents["size"]  + Rainbow(" Seeders :#{seeds}").blue  + Rainbow(" Peers : #{peers} ").red + Rainbow("  Torrent : #{torrents["url"]}").yellow #.bg(:yellow)
+                    puts "Quality: "+ torrents["quality"]+" Size :"+ torrents["size"]  + Rainbow(" Seeders :#{seeds}").green  + Rainbow(" Peers : #{peers} ").red + Rainbow("  Torrent : #{torrents["url"]}").yellow #.bg(:yellow)
                    
 
                     #rows << [movies["title_long"],torrents["quality"],torrents["size"],Rainbow(" Seeders :#{seeds}").blue,Rainbow(" Peers : #{peers} ").red,Rainbow("  Torrent : #{torrents["url"]}").yellow]
